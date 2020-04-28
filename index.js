@@ -133,8 +133,10 @@ function processProduct(num1, num2, callback) {
  * [2] Invoking `processDuplicateFree` passing `[1,1,2,2,3]` and `(arr) => arr.length`,
  * should return 3.
 */
-function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */) {
-  /* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS */
+function processDuplicateFree(list, callback) {
+  
+
+  // return callback(array)
 }
 
 /////////////// HIGHER-ORDER ARRAY METHODS ///////////////
@@ -157,7 +159,13 @@ function processDuplicateFree(/* CODE HERE ONLY AFTER COMPLETING ALL OTHER TASKS
  * [2] Invoking `lowerCaseStrings` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
 function lowerCaseStrings(strings) {
-  strings.forEach(element => element.toLowerCase())
+  const lowerCase =[]
+  strings.forEach(element => {
+    let x = element.toLowerCase();
+    lowerCase.push(x);
+  })
+
+  return lowerCase;
 }
 
 /**
@@ -175,8 +183,17 @@ function lowerCaseStrings(strings) {
  * 
  * [2] Invoking `isItAnApple` with `['a', 'b', 'c' ]` will return `[ false, false, false ]`.
 */
-function isItAnApple(/* code here */) {
-  /* code here */
+function isItAnApple(strings) {
+  const results = [];
+  strings.map(element => {
+    if(element === `apple`){
+      return results.push(true);
+    }
+    else{
+      return results.push(false);
+    }
+  })
+  return results;
 }
 
 /**
@@ -195,8 +212,9 @@ function isItAnApple(/* code here */) {
  * 
  * [2] Invoking `removeApple` with `['a', 'b', 'c' ]` will return `[ 'a', 'b', 'c' ]`.
 */
-function removeApple(/* code here */) {
-  /* code here */
+function removeApple(strings) {
+  const newList = strings.filter(element => element !== `apple`);
+  return newList;
 }
 
 /**
@@ -214,8 +232,12 @@ function removeApple(/* code here */) {
  * 
  * [2] Invoking `stringSmash` with `['a', 'b', 'c' ]` will return `abc`.
 */
-function stringSmash(/* code here */) {
-  /* code here */
+function stringSmash(strings) {
+  let smash = strings.reduce((acc, val) => {
+    return acc + val;
+  },``)
+
+  return smash;
 }
 
 // A local community center is holding a fund raising 5k fun run and has invited
@@ -233,8 +255,13 @@ function stringSmash(/* code here */) {
  * @returns an array with all the runners' full names in the following format: "Smith, John".
  * The full names appear in the array in the same order the runners appear in the `runners` array.
 */
-function getFullNames(/* CODE HERE */) {
-  /* CODE HERE */
+function getFullNames(runners) {
+  const fullNames = [];
+  runners.forEach((element)=>{
+    let full = `${element.last_name}, ${element.first_name}`;
+    fullNames.push(full);
+  })
+  return fullNames;
 }
 
 /**
@@ -249,8 +276,16 @@ function getFullNames(/* CODE HERE */) {
  * @returns an array with all the runners' first names in ALL CAPS.
  * The first names appear in the array in the same order the runners appear in the `runners` array.
 */
-function firstNamesAllCaps(/* CODE HERE */) {
-  /* CODE HERE */
+function firstNamesAllCaps(runners) {
+  const results = [];
+
+  const firstname = runners.map((element)=>{
+    let copy = element.first_name
+    let caps = copy.toUpperCase();
+    results.push(caps);
+  })
+
+  return results;
 }
 
 /**
@@ -267,8 +302,9 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+  const tShirts = runners.filter(runner => runner.shirt_size === tShirtSize);
+  return tShirts;
 }
 
 /**
@@ -282,8 +318,12 @@ function getRunnersByTShirtSize(/* CODE HERE */) {
  * @param runners array of runners like the one inside the /data/runners.js file.
  * @returns a number which is the sum of the donations by all runners.
 */
-function tallyUpDonations(/* CODE HERE */) {
-  /* CODE HERE */
+function tallyUpDonations(runners) {
+  let sum = runners.reduce((acc,val) =>{
+    return acc+val.donation;
+  }, 0);
+
+  return(sum);
 }
 
 /////////////// CLOSURES ///////////////
